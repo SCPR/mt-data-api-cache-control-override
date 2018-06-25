@@ -1,0 +1,11 @@
+name: DataAPICacheControlOverride
+version: 0.5
+
+applications:
+  data_api:
+    callbacks:
+      post_run: |
+        sub {
+          my $app = $_[1];
+          $app->{cgi_headers}{'-cache_control'} = 'public, max-age=86400';
+        }
